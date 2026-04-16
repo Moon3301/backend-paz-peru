@@ -8,6 +8,16 @@ import { createLeadHandler } from './handlers/create-lead.handler';
 import { sendEmailHandler } from './handlers/send-email.handler';
 import { ClientPayload } from './interfaces/quotation.interfaces';
 
+const TEMPLATE_IDS: Record<number, number> = {
+  28: 183, // Marena
+  27: 169, // Lima 15
+  26: 167, // Matiz
+};
+
+function getTemplateId(proyectoID: string): number {
+  return TEMPLATE_IDS[parseInt(proyectoID)] ?? 1;
+}
+
 @Injectable()
 export class QuotationService {
   constructor(
@@ -62,7 +72,7 @@ export class QuotationService {
       client_id: clientId,
       unit_id: dto.unidadID,
       type_id: dto.tipologiaID,
-      template_id: 617,
+      template_id: getTemplateId(dto.proyectoID),
       utm_source: dto.utm_source ?? 'organico',
       utm_medium: dto.utm_medium ?? 'proforma web',
       utm_campaign: dto.utm_campaign ?? 'organico',
