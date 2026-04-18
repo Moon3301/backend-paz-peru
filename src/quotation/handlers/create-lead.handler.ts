@@ -8,7 +8,10 @@ export async function createLeadHandler(
   apiKey: string,
   payload: LeadPayload,
 ): Promise<void> {
-  await firstValueFrom(
+
+  console.log(payload);
+
+  const response = await firstValueFrom(
     httpService.post(`${apiUrl}budgets`, payload, {
       headers: {
         Authorization: apiKey,
@@ -16,4 +19,5 @@ export async function createLeadHandler(
       },
     }),
   );
+
 }

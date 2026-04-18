@@ -5,6 +5,8 @@ export async function sendEmailHandler(
   payload: EmailPayload,
   smtpHost: string,
   smtpPort: number,
+  smtpUser: string,
+  smtpPass: string,
 ): Promise<void> {
   const { toEmail, firstName, lastName, unidad, tipologia, proyecto } = payload;
 
@@ -12,11 +14,12 @@ export async function sendEmailHandler(
     host: smtpHost,
     port: smtpPort,
     secure: false,
+    auth: { type: 'login', user: smtpUser, pass: smtpPass },
     tls: { rejectUnauthorized: false },
   });
 
   await transporter.sendMail({
-    from: '"Paz Inmobiliaria" <webmaster@paz.pe>',
+    from: 'inmobiliariapaz@paz.cl',
     to: toEmail,
     bcc: 'desarrollopaz@inventa.cl',
     subject: 'Gracias por tu interés en Paz Inmobiliaria',

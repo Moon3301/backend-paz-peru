@@ -30,6 +30,8 @@ export class QuotationService {
     const apiKey = this.configService.getOrThrow<string>('SPERANT_API_KEY');
     const smtpHost = this.configService.getOrThrow<string>('SMTP_HOST');
     const smtpPort = this.configService.get<number>('SMTP_PORT') ?? 25;
+    const smtpUser = this.configService.getOrThrow<string>('SMTP_USER');
+    const smtpPass = this.configService.getOrThrow<string>('SMTP_PASS');
 
     // 1. Check if client already exists in CRM
     const { exists } = await checkClientHandler(
@@ -90,6 +92,8 @@ export class QuotationService {
       },
       smtpHost,
       smtpPort,
+      smtpUser,
+      smtpPass,
     );
 
     return { success: true, message: 'Lead generado exitosamente en crm' };
