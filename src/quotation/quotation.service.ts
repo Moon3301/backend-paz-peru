@@ -81,20 +81,20 @@ export class QuotationService {
     });
 
     // 4. Send confirmation email to client
-    await sendEmailHandler(
-      {
-        toEmail: dto.email,
-        firstName: dto.fname,
-        lastName: dto.lname,
-        unidad: dto.unidad,
-        tipologia: dto.tipologia,
-        proyecto: dto.proyecto,
-      },
-      smtpHost,
-      smtpPort,
-      smtpUser,
-      smtpPass,
-    );
+    // await sendEmailHandler(
+    //   {
+    //     toEmail: dto.email,
+    //     firstName: dto.fname,
+    //     lastName: dto.lname,
+    //     unidad: dto.unidad,
+    //     tipologia: dto.tipologia,
+    //     proyecto: dto.proyecto,
+    //   },
+    //   smtpHost,
+    //   smtpPort,
+    //   smtpUser,
+    //   smtpPass,
+    // );
 
     return { success: true, message: 'Lead generado exitosamente en crm' };
   }
