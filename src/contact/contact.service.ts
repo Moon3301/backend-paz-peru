@@ -3,28 +3,39 @@ import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 import { ContactDto } from './dto/contact.dto';
 
-const CONTACT_EMAIL = 'carlos_db_16@live.cl'; //postventa@paz.pe
+const CONTACT_EMAIL = 'postventa@paz.pe'; //postventa@paz.pe
 
 @Injectable()
 export class ContactService {
-  
+
   constructor(private readonly configService: ConfigService) {}
 
   async send(dto: ContactDto): Promise<{ success: boolean; message: string }> {
     const smtpHost = this.configService.getOrThrow<string>('SMTP_HOST');
     const smtpPort = this.configService.get<number>('SMTP_PORT') ?? 25;
+    const smtpUser = this.configService.getOrThrow<string>('USER_AD');
+    const smtpPass = this.configService.getOrThrow<string>('PWD_AD');
+    const smtpFrom = this.configService.getOrThrow<string>('SMTP_INFO');
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
       secure: false,
-      ignoreTLS: true,
+      auth: { user: smtpUser, pass: smtpPass },
       tls: { rejectUnauthorized: false },
     });
 
+    try {
+      await transporter.verify();
+      console.log("Server is ready to take our messages");
+    } catch (err) {
+      console.error("Verification failed", err);
+    }
+
     const response = await transporter.sendMail({
-      from: 'inmobiliariapaz@paz.cl',
+      from: smtpFrom,
       to: CONTACT_EMAIL,
+      cc: 'scancino@acdata.cl',
       subject: `Consulta de contacto – ${dto.nombre} ${dto.apellido}`,
       html: buildContactEmail(dto),
     });
