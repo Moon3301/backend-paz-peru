@@ -3,32 +3,37 @@ import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 import { ContactDto } from './dto/contact.dto';
 
-const CONTACT_EMAIL = 'postventa@paz.pe';
+const CONTACT_EMAIL = 'carlos_db_16@live.cl'; //postventa@paz.pe
 
 @Injectable()
 export class ContactService {
+  
   constructor(private readonly configService: ConfigService) {}
 
   async send(dto: ContactDto): Promise<{ success: boolean; message: string }> {
     const smtpHost = this.configService.getOrThrow<string>('SMTP_HOST');
-    const smtpPort = this.configService.get<number>('SMTP_PORT') ?? 587;
-    const smtpUser = this.configService.getOrThrow<string>('SMTP_USER');
-    const smtpPass = this.configService.getOrThrow<string>('SMTP_PASS');
+    const smtpPort = this.configService.get<number>('SMTP_PORT') ?? 25;
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
       secure: false,
-      auth: { type: 'login', user: smtpUser, pass: smtpPass },
+      ignoreTLS: true,
       tls: { rejectUnauthorized: false },
     });
 
-    await transporter.sendMail({
+    const response = await transporter.sendMail({
       from: 'inmobiliariapaz@paz.cl',
       to: CONTACT_EMAIL,
       subject: `Consulta de contacto – ${dto.nombre} ${dto.apellido}`,
       html: buildContactEmail(dto),
     });
+
+    console.log('Respuesta del correo: ', response);
+
+    if (response.accepted.length === 0) {
+      return { success: false, message: 'Error al enviar el mensaje.' };
+    }
 
     return { success: true, message: 'Mensaje enviado correctamente.' };
   }

@@ -5,8 +5,6 @@ export async function sendEmailHandler(
   payload: EmailPayload,
   smtpHost: string,
   smtpPort: number,
-  smtpUser: string,
-  smtpPass: string,
 ): Promise<void> {
   const { toEmail, firstName, lastName, unidad, tipologia, proyecto } = payload;
 
@@ -14,7 +12,7 @@ export async function sendEmailHandler(
     host: smtpHost,
     port: smtpPort,
     secure: false,
-    auth: { type: 'login', user: smtpUser, pass: smtpPass },
+    ignoreTLS: true,
     tls: { rejectUnauthorized: false },
   });
 

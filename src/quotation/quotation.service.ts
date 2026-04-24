@@ -30,8 +30,6 @@ export class QuotationService {
     const apiKey = this.configService.getOrThrow<string>('SPERANT_API_KEY');
     const smtpHost = this.configService.getOrThrow<string>('SMTP_HOST');
     const smtpPort = this.configService.get<number>('SMTP_PORT') ?? 25;
-    const smtpUser = this.configService.getOrThrow<string>('SMTP_USER');
-    const smtpPass = this.configService.getOrThrow<string>('SMTP_PASS');
 
     // 1. Check if client already exists in CRM
     const { exists } = await checkClientHandler(
@@ -81,20 +79,18 @@ export class QuotationService {
     });
 
     // 4. Send confirmation email to client
-    // await sendEmailHandler(
-    //   {
-    //     toEmail: dto.email,
-    //     firstName: dto.fname,
-    //     lastName: dto.lname,
-    //     unidad: dto.unidad,
-    //     tipologia: dto.tipologia,
-    //     proyecto: dto.proyecto,
-    //   },
-    //   smtpHost,
-    //   smtpPort,
-    //   smtpUser,
-    //   smtpPass,
-    // );
+    await sendEmailHandler(
+      {
+        toEmail: dto.email,
+        firstName: dto.fname,
+        lastName: dto.lname,
+        unidad: dto.unidad,
+        tipologia: dto.tipologia,
+        proyecto: dto.proyecto,
+      },
+      smtpHost,
+      smtpPort,
+    );
 
     return { success: true, message: 'Lead generado exitosamente en crm' };
   }
