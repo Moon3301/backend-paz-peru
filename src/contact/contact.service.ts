@@ -36,7 +36,6 @@ export class ContactService {
     const response = await transporter.sendMail({
       from: smtpFrom,
       to: CONTACT_EMAIL,
-      cc: 'scancino@acdata.cl',
       subject: `Consulta de contacto – ${dto.nombre} ${dto.apellido}`,
       html: buildContactEmail(dto),
     });
@@ -73,11 +72,11 @@ export class ContactService {
     }
 
     const tipoLabel = dto.tipoReclamo === 'queja' ? 'Queja' : 'Reclamo';
-
+    
     const response = await transporter.sendMail({
       from: smtpFrom,
       to: CONTACT_EMAIL,
-      cc: 'scancino@acdata.cl',
+      cc: dto.email,
       subject: `[Libro de Reclamaciones] ${tipoLabel} – ${dto.complaintNumber} – ${dto.nombres} ${dto.apellidos}`,
       html: buildComplaintEmail(dto),
     });
