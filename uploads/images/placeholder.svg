@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#d0c8b8"/>
+  <rect x="510" y="320" width="180" height="160" rx="8" fill="#b8b0a0"/>
+  <circle cx="600" cy="390" r="45" fill="#c8c0b0"/>
+  <circle cx="600" cy="390" r="30" fill="#b0a898"/>
+  <rect x="558" y="328" width="84" height="12" rx="6" fill="#b8b0a0"/>
+  <text x="600" y="530" font-family="Arial,sans-serif" font-size="22" fill="#8a8075" text-anchor="middle">Imagen del proyecto</text>
+</svg>
