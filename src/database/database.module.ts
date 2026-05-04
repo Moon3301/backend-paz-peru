@@ -26,7 +26,7 @@ import { CmsSetting } from '../cms-settings/entities/cms-setting.entity';
         database: config.get<string>('DB_DATABASE'),
         entities: [Project, ProjectSection, Promotion, DeliveredProject, Event, BlogPost, Media, Admin, District, CmsSetting],
         synchronize: config.get<string>('DB_SYNC') === 'true',
-        dropSchema: false,
+        dropSchema: config.get<string>('DB_DROP') === 'true',
         charset: 'utf8mb4',
         timezone: '+00:00',
       }),
