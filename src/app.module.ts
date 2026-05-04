@@ -15,6 +15,7 @@ import { ContactModule } from './contact/contact.module';
 import { DeliveredProjectsModule } from './delivered-projects/delivered-projects.module';
 import { DistrictsModule } from './districts/districts.module';
 import { CmsSettingsModule } from './cms-settings/cms-settings.module';
+import { DevToolsModule } from './dev-tools/dev-tools.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { CmsSettingsModule } from './cms-settings/cms-settings.module';
     DeliveredProjectsModule,
     DistrictsModule,
     CmsSettingsModule,
+    DevToolsModule,
 
     // Módulos existentes
     UnitsModule,

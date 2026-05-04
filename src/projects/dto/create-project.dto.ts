@@ -14,7 +14,7 @@ export class CreateProjectDto {
   @Length(2, 100)
   district: string;
 
-  @IsIn(['LANZAMIENTO', 'EN CONSTRUCCIÓN', 'ENTREGA', 'AGOTADO'])
+  @IsIn(['LANZAMIENTO', 'EN CONSTRUCCIÓN', 'ENTREGA', 'AGOTADO', 'PRÓXIMAMENTE', 'ULTIMOS DEPAS'])
   status: ProjectStatus;
 
   @IsOptional()

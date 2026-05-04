@@ -662,6 +662,16 @@ async function seed() {
       value: '/images/promotions/banner-hero-mb.jpg',
       label: 'Hero banner página Promociones — móvil (≤768 px)',
     },
+    {
+      key: 'promos_main_banner',
+      value: '/images/home/home_d.png',
+      label: 'Banner principal página Promociones (debajo del título de sección)',
+    },
+    {
+      key: 'privacy_policy',
+      value: '<h2>Política de Privacidad</h2><p>Configure el contenido de la política de privacidad desde el panel de administración.</p>',
+      label: 'Contenido HTML de la Política de Privacidad',
+    },
   ];
   for (const data of CMS_SETTINGS_DATA) {
     const existing = await settingRepo.findOne({ where: { key: data.key } });

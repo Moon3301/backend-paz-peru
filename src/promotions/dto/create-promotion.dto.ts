@@ -7,6 +7,11 @@ export class CreatePromotionDto {
 
   @IsOptional()
   @IsString()
+  @Length(0, 100)
+  district?: string;
+
+  @IsOptional()
+  @IsString()
   description?: string;
 
   @IsOptional()
@@ -17,6 +22,18 @@ export class CreatePromotionDto {
   @IsString()
   @Length(0, 100)
   badgeText?: string;
+
+  @IsOptional()
+  @IsString()
+  projectLink?: string;
+
+  @IsOptional()
+  @IsString()
+  disclaimer?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isFeatured?: boolean;
 
   @IsOptional()
   @IsNumber()
