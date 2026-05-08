@@ -33,4 +33,4 @@ import { CmsSetting } from '../cms-settings/entities/cms-setting.entity';
     }),
   ],
 })
-export class DatabaseModule {}
+export class DatabaseModule { }
