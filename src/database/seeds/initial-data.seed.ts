@@ -672,6 +672,101 @@ async function seed() {
       value: '<h2>Política de Privacidad</h2><p>Configure el contenido de la política de privacidad desde el panel de administración.</p>',
       label: 'Contenido HTML de la Política de Privacidad',
     },
+    {
+      key: 'promo_cliente_amigo_img',
+      value: '/images/promotions/cliente-amigo.jpg',
+      label: 'Imagen Banner 2 (Programa Cliente Amigo)',
+    },
+    {
+      key: 'promo_cliente_amigo_note',
+      value: '(*) La regulación del IRT, se cuenta desde la firma de la minuta de compraventa — aplica en proyectos SAVIA y ESCALA.',
+      label: 'Nota legal inicial del Programa Cliente Amigo',
+    },
+    {
+      key: 'promo_cliente_amigo_blocks',
+      value: JSON.stringify([
+        { title: 'GALIA – AMALFI – SAVIA – REAL – MAGNOLIA – ESCALA – MEDINA – TALLER – CENTRAL', text: '(*) Válido desde el 01/01/25 al 31/12/2025 o hasta agotar stock. Aplica solo para los propietarios o inquilinos cuyas amistades compren uno o más departamentos en el proyecto Galia, Amalfi, Savia, Real, Magnolia, Escala, Patio La Paz, Central, Florencia, Medina y Taller. Se entregará 1 vale de consumo por S/1,000.00 soles en Falabella por cada minuta firmada por el amigo referido. Plazo de recojo: 20 días calendario contados desde que el vale llega a la sala ventas, hecho que será informado al ganador por correo electrónico. En caso no se recoja, el premio quedará anulado y sin derecho a reclamo. Lugar de recojo: Sala de ventas del proyecto donde el amigo referido adquirió el bien inmueble. Uso sujeto a condiciones y restricciones del establecimiento donde se utilice el vale.' },
+        { title: 'SEPARA TU DEPA:', text: '(*) Válido del 01.10.24 al 31.10.24 o hasta agotar stock en proyectos Savia, Florencia, Escala y Ciudad Verde. El costo de separación es S/1,000. No acumulable con otras promociones. Sujeto a evaluación crediticia.' },
+        { title: 'REAL 1', text: '(*) Válido del 20.09.24 al 31.10.24 o hasta agotar stock. Precio desde S/246,000 soles. Financiamiento por 20 años con Banco Interbank con cuota inicial del 10%, cuota mensual desde S/1,190; tasa de 9.2%. Aplica Bono BMS de S/13,600 en departamento 2003 en REAL, Etapa 1. No acumulable con otras promociones. Sujeto a previa evaluación crediticia.' },
+        { title: 'FLORENCIA', text: '(*) Válido del 20.09.24 al 31.10.24 o hasta agotar stock. Precio desde S/330,000 soles. Financiamiento por 20 años con Banco Interbank con cuota inicial del 10%, cuota mensual desde S/2,707; tasa de 9.2%. Aplica Bono BMS de S/13,600 en departamento 809 en FLORENCIA. No acumulable con otras promociones. Sujeto a previa evaluación crediticia.' },
+        { title: 'PATIO LA PAZ', text: '(*) Válido del 20.09.24 al 31.10.24 o hasta agotar stock. Precio desde S/288,000 soles. Financiamiento por 20 años con Banco Interbank con cuota inicial del 10%, cuota mensual desde S/2,375; tasa de 9.5%. Aplica Bono BMS de S/13,600, en departamento B-608 en Patio La Paz. No acumulable con otras promociones. Sujeto a previa evaluación crediticia.' },
+        { title: 'MEDINA', text: '(*) Válido del 11.10.24 al 24.10.24 o hasta agotar stock. Aplica descuento de hasta S/120,000 soles en departamento 1701 de MEDINA. No acumulable con otras promociones. Sujeto a evaluación crediticia.' },
+        { title: 'Horario extendido', text: '(*) Válido del 17.10.24 al 19.10.24 o hasta agotar stock, por la compra de 1 Dpto (ya sea, de 1D, 2D ó 3D). Stock: 1 Giftcard de Saga Falabella (GC) por cada proyecto inmobiliario, considerando i) GC de S/1,000 por compra de 1 Dpto de 1D; ó, ii) GC de S/2,000 por compra de 1 Dpto de 2D; ó, iii) GC de S/3,000 por la compra de 1 Dpto de 3D. Sujeto a evaluación financiera de bancos. No acumulable con otras promociones. No aplica el proyecto Ciudad Verde.' },
+      ]),
+      label: 'Bloques de texto legal del Programa Cliente Amigo (JSON interno)',
+    },
+    {
+      key: 'promo_cliente_amigo_download_link',
+      value: 'https://drive.google.com/file/d/15fNrI0pOSnDrCn9bKeq8N1I5b/view?usp=drive_link',
+      label: 'Enlace del botón "Descarga las bases" del Programa Cliente Amigo',
+    },
+
+    // ── Home page ─────────────────────────────────────────────────────────
+    {
+      key: 'home_hero_slides',
+      value: JSON.stringify([
+        {
+          type: 'video',
+          mediaSrc: '/videos/video-home-pazcentenario-nuevo.mp4',
+          poster: '/images/hero/preview-video-home.jpg',
+          title: 'Bienvenido a tu',
+          titleBold: 'nueva vida',
+          projectName: 'PROYECTO ESCALA',
+          projectLabel: 'SANTA CATALINA',
+          link: '/departamentos-en-venta/la-victoria/escala',
+        },
+        {
+          type: 'video',
+          mediaSrc: '/videos/video-home-pazcentenario-nuevo.mp4',
+          poster: '/images/hero/preview-video-home.jpg',
+          title: 'Tu hogar ideal',
+          titleBold: 'te espera',
+          projectName: 'PROYECTO TALLER',
+          projectLabel: 'MIRAFLORES',
+          link: '/departamentos-en-venta/miraflores/taller',
+        },
+        {
+          type: 'video',
+          mediaSrc: '/videos/video-home-pazcentenario-nuevo.mp4',
+          poster: '/images/hero/preview-video-home.jpg',
+          title: 'Espacios para',
+          titleBold: 'disfrutar la vida',
+          projectName: 'PROYECTO SAVIA',
+          projectLabel: 'PUEBLO LIBRE',
+          link: '/departamentos-en-venta/pueblo-libre/savia',
+        },
+      ]),
+      label: 'Slides del Hero del Home (JSON: array de objetos con type, mediaSrc, poster, title, titleBold, projectName, projectLabel, link)',
+    },
+    {
+      key: 'home_history_text',
+      value: 'Paz Inmobiliaria, con más de 16 años desarrollando proyectos inmobiliarios, +8,700 unidades entregadas que corroboran nuestro compromiso con nuestros clientes y +29 proyectos desarrollados que nos alientan a seguir mejorando la ciudad, nuestro propósito. "Creamos espacios, para disfrutar la vida" es la guía en cada paso que damos.',
+      label: 'Texto descriptivo de la sección "Nuestra Historia"',
+    },
+    {
+      key: 'home_history_youtube_id',
+      value: '8QVPyM1CRaY',
+      label: 'ID del vídeo de YouTube para la sección "Nuestra Historia"',
+    },
+    {
+      key: 'home_history_stats',
+      value: JSON.stringify([
+        { value: '16 años', label: 'Cumpliendo sueños'        },
+        { value: '+8,700',  label: 'Departamentos entregados' },
+        { value: '+29',     label: 'Proyectos desarrollados'  },
+      ]),
+      label: 'Estadísticas de la sección "Nuestra Historia" (JSON: array de {value, label})',
+    },
+    {
+      key: 'home_ubication_subtitle',
+      value: 'Los proyectos de Paz Inmobiliaria están en los distritos de Miraflores, Pueblo Libre, San Miguel y más.',
+      label: 'Subtítulo de la sección "Ubícanos" en el Home',
+    },
+    {
+      key: 'home_ubication_map',
+      value: '/images/ubication/mapa.webp',
+      label: 'URL de la imagen del mapa en la sección "Ubícanos"',
+    },
   ];
   for (const data of CMS_SETTINGS_DATA) {
     const existing = await settingRepo.findOne({ where: { key: data.key } });
