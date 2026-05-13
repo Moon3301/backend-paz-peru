@@ -2,7 +2,9 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { ContactDto } from './dto/contact.dto';
 import { ComplaintDto } from './dto/complaint.dto';
 import { ContactService } from './contact.service';
+import { Public } from '../auth/decorators/public.decorator';
 
+@Public()
 @Controller('contact')
 export class ContactController {
   constructor(private readonly contactService: ContactService) {}

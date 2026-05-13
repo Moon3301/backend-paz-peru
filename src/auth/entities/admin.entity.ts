@@ -6,22 +6,25 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+export type AdminRole = 'admin' | 'ventas' | 'seo';
+
 @Entity('admins')
 export class Admin {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ length: 150 })
+  name: string;
+
   @Column({ unique: true, length: 200 })
   email: string;
 
-  /**
-   * Hash bcrypt. Vacío mientras auth no esté activo.
-   */
-  @Column({ name: 'password_hash', length: 255, nullable: true })
-  passwordHash: string;
+  @Column({ name: 'password_hash', type: 'varchar', length: 255, nullable: true, default: null })
+  passwordHash: string | null;
 
-  @Column({ length: 50, default: 'admin' })
-  role: string;
+  /** Rol del usuario: admin | ventas | seo */
+  @Column({ type: 'varchar', length: 50, default: 'ventas' })
+  role: AdminRole;
 
   @Column({ name: 'is_active', default: true })
   isActive: boolean;

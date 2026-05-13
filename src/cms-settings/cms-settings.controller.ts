@@ -19,8 +19,16 @@ export class CmsSettingsPublicController {
 export class CmsSettingsAdminController {
   constructor(private readonly service: CmsSettingsService) {}
 
+  /**
+   * Acepta dos formatos de body:
+   *   { settings: [{ key, value }, ...] }   ← formato del panel Angular
+   *   [{ key, value }, ...]                  ← array directo (compatibilidad)
+   */
   @Patch()
-  update(@Body() body: { settings: { key: string; value: string }[] }) {
-    return this.service.upsertMany(body.settings);
+  update(@Body() body: { settings?: { key: string; value: string }[] } | { key: string; value: string }[]) {
+    const items: { key: string; value: string }[] = Array.isArray(body)
+      ? body
+      : (body as any)?.settings ?? [];
+    return this.service.upsertMany(items);
   }
 }

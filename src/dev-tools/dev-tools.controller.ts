@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Roles } from '../auth/decorators/roles.decorator';
 import { Repository } from 'typeorm';
 import { Project } from '../projects/entities/project.entity';
 import { ProjectSection } from '../projects/entities/project-section.entity';
@@ -9,6 +10,8 @@ import { District } from '../districts/entities/district.entity';
 import { CmsSetting } from '../cms-settings/entities/cms-setting.entity';
 import { BlogPost } from '../blog/entities/blog-post.entity';
 
+/** Dev Tools — exclusivo para el rol 'admin' */
+@Roles('admin')
 @Controller('admin/seed-export')
 export class DevToolsController {
   constructor(

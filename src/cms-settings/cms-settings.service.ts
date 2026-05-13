@@ -21,6 +21,7 @@ export class CmsSettingsService {
 
   /** Inserta o actualiza (upsert) una lista de settings */
   async upsertMany(items: { key: string; value: string }[]): Promise<Record<string, string>> {
+    if (!Array.isArray(items) || items.length === 0) return this.getAll();
     for (const item of items) {
       const existing = await this.repo.findOne({ where: { key: item.key } });
       if (existing) {

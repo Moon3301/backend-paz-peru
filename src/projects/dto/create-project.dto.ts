@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsBoolean, IsNumber, IsIn, Length } from 'class-validator';
+import { IsString, IsOptional, IsBoolean, IsNumber, IsIn, Length, MaxLength } from 'class-validator';
 import type { ProjectStatus } from '../entities/project.entity';
 
 export class CreateProjectDto {
@@ -36,4 +36,26 @@ export class CreateProjectDto {
   @IsOptional()
   @IsNumber()
   sortOrder?: number;
+
+  // ── SEO ──────────────────────────────────────────────────────────────────
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(200)
+  metaTitle?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(500)
+  metaDescription?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(500)
+  metaKeywords?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(500)
+  ogImageUrl?: string;
 }

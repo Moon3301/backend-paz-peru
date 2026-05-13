@@ -42,6 +42,24 @@ export class Project {
   @Column({ name: 'sort_order', default: 0 })
   sortOrder: number;
 
+  // ── SEO ──────────────────────────────────────────────────────────────────
+
+  /** Título para <title> y og:title. Si está vacío usa el nombre del proyecto. */
+  @Column({ name: 'meta_title', type: 'varchar', length: 200, nullable: true, default: null })
+  metaTitle: string | null;
+
+  /** Texto para <meta name="description"> y og:description. */
+  @Column({ name: 'meta_description', type: 'text', nullable: true, default: null })
+  metaDescription: string | null;
+
+  /** Keywords separadas por coma para <meta name="keywords">. */
+  @Column({ name: 'meta_keywords', type: 'varchar', length: 500, nullable: true, default: null })
+  metaKeywords: string | null;
+
+  /** URL de imagen para og:image y twitter:image del proyecto. */
+  @Column({ name: 'og_image_url', type: 'varchar', length: 500, nullable: true, default: null })
+  ogImageUrl: string | null;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
