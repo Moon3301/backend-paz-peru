@@ -548,14 +548,22 @@ async function seed() {
 
     for (const [key, config] of Object.entries(data.sections)) {
       const sectionKey = key as any;
-      let section = await sectionRepo.findOne({ where: { projectId: project.id, sectionKey } });
+      const section = await sectionRepo.findOne({ where: { projectId: project.id, sectionKey } });
       if (!section) {
-        section = sectionRepo.create({ projectId: project.id, sectionKey, isVisible: true, sortOrder: 0 });
+        // Solo inserta si la sección no existe aún — nunca sobreescribe data existente
+        const newSection = sectionRepo.create({
+          projectId: project.id,
+          sectionKey,
+          isVisible: true,
+          sortOrder: 0,
+          config: JSON.stringify(config),
+        });
+        await sectionRepo.save(newSection);
+        console.log(`  ✓ Sección creada: ${data.name} › ${sectionKey}`);
+      } else {
+        console.log(`  → Sección ya existe: ${data.name} › ${sectionKey}`);
       }
-      section.config = JSON.stringify(config);
-      await sectionRepo.save(section);
     }
-    console.log(`  ✓ Secciones guardadas: ${data.name}`);
   }
 
   // ── Promociones ─────────────────────────────────────────────────────────────
@@ -625,22 +633,23 @@ async function seed() {
       isVisible: !!imageUrl,
     });
 
-    let section = await sectionRepo.findOne({
+    const section = await sectionRepo.findOne({
       where: { projectId: project.id, sectionKey: 'promo_banner' as any },
     });
     if (!section) {
-      section = sectionRepo.create({
+      // Solo inserta si no existe — nunca sobreescribe config editada desde el panel
+      const newSection = sectionRepo.create({
         projectId: project.id,
         sectionKey: 'promo_banner' as any,
         sortOrder: 0,
+        config,
+        isVisible: !!imageUrl,
       });
+      await sectionRepo.save(newSection);
       console.log(`  ✓ promo_banner creado: ${project.slug}`);
     } else {
-      console.log(`  ↺ promo_banner actualizado: ${project.slug}`);
+      console.log(`  → promo_banner ya existe: ${project.slug}`);
     }
-    section.config = config;
-    section.isVisible = !!imageUrl;
-    await sectionRepo.save(section);
   }
 
   // ── CMS Settings (banners globales) ──────────────────────────────────────
