@@ -81,6 +81,10 @@ export class QuotationService {
       utm_campaign: dto.utm_campaign ?? 'organico',
     });
 
+    if(dto.sendEmail === false) {
+      return { success: true, message: 'Lead generado exitosamente en crm' };
+    }
+
     // 4. Send confirmation email to client
     await sendEmailHandler(
       {

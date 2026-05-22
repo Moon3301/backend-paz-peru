@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class SubmitQuotationDto {
   @IsNotEmpty()
@@ -63,4 +63,9 @@ export class SubmitQuotationDto {
   @IsOptional()
   @IsString()
   utm_campaign?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  sendEmail?: boolean;
+
 }
