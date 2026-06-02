@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\CarlosAcevedo\\\\Desktop\\\\env-dev\\\\PAZ PERU\\\\frontend-web-paz-peru\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(grep -E \"\\\\.\\(ts|html|scss\\)$\")"
     ]
   }
 }

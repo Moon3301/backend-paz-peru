@@ -40,11 +40,6 @@ export class MediaController {
     );
   }
 
-  @Delete(':id')
-  removeById(@Param('id', ParseIntPipe) id: number) {
-    return this.mediaService.remove(id);
-  }
-
   // ── Media Manager ─────────────────────────────────────────────────────────
 
   /** Árbol de carpetas y archivos del directorio uploads */
@@ -63,11 +58,17 @@ export class MediaController {
     return this.mediaService.uploadToFolder(file, folder ?? '');
   }
 
-  /** Eliminar un archivo por su ruta relativa */
+  /** Eliminar un archivo por su ruta relativa — debe declararse ANTES de @Delete(':id')
+   *  para que NestJS/Express no interprete 'files' como un ID numérico. */
   @Delete('files')
   @HttpCode(204)
   deleteFile(@Query('path') path: string) {
     return this.mediaService.deleteByPath(path);
+  }
+
+  @Delete(':id')
+  removeById(@Param('id', ParseIntPipe) id: number) {
+    return this.mediaService.remove(id);
   }
 
   /** Crear una carpeta vacía */
