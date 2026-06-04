@@ -5,7 +5,10 @@
       "Bash(npx tsc:*)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\CarlosAcevedo\\\\Desktop\\\\env-dev\\\\PAZ PERU\\\\frontend-web-paz-peru\" -Directory)",
       "Bash(Select-Object Name)",
-      "Bash(grep -E \"\\\\.\\(ts|html|scss\\)$\")"
+      "Bash(grep -E \"\\\\.\\(ts|html|scss\\)$\")",
+      "Bash(npx ng *)",
+      "Bash(findstr /r \"apartment-specs__description\" styles*.css)",
+      "Bash(dir /b *.css)"
     ]
   }
 }
