@@ -181,12 +181,12 @@ function buildContactEmail(dto: ContactDto): string {
   <tr><td>&nbsp;</td></tr>
   <tr>
     <td style="text-align:center;color:#222222;font-family:sans-serif;font-size:14px;">
-      Paz Inmobiliaria S.A 20518023579 / Paz Real Estate S.A.C RUC 20605346716
+      Paz Inmobiliaria S.A 20518023579 / Paz Real Estate S.A.C RUC 20605346716 / PV60 S.A.C RUC 20614710340
     </td>
   </tr>
   <tr>
     <td style="text-align:center;color:#222222;font-family:sans-serif;font-size:14px;">
-      Av. Camino real 390, Torre central - Oficina 1701, San Isidro
+      Av. Aviación 2540, Oficina piso 8, San Borja
     </td>
   </tr>
   <tr><td>&nbsp;</td></tr>
